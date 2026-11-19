@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KEEPSAKE — You are worth keeping</title>
+<meta name="description" content="KEEPSAKE 香港自家手調香水品牌，由兩位創辦人小批量調製。你值得被珍藏。">
+<style>
+  :root {
+    --bg: #f5f0e8;
+    --ink: #1c1a17;
+    --muted: #6f675c;
+    --line: #d9d0c3;
+    --card: #fffdf9;
+    --accent: #a58a5c;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Songti TC", "Noto Serif TC", "PMingLiU", Georgia, serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.9;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── 頂部導覽 ── */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(245,240,232,0.94);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 900px; margin: 0 auto; padding: 14px 24px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav-logo { letter-spacing: 0.28em; font-weight: 600; text-decoration: none; color: var(--ink); }
+  .nav-links { display: flex; gap: 22px; font-size: 0.85rem; }
+  .nav-links a { color: var(--muted); text-decoration: none; letter-spacing: 0.1em; }
+  .nav-links a:hover { color: var(--ink); }
+  @media (max-width: 560px) { .nav-links { gap: 12px; font-size: 0.78rem; } }
+
+  /* ── 交替段落：正常＝左圖右字；.flip＝左字右圖 ── */
+  .row {
+    display: flex; align-items: center; gap: 40px;
+    padding: 56px 0;
+  }
+  .row .txt { flex: 1; min-width: 0; order: 2; }
+  .row .pic { flex: 1; min-width: 0; order: 1; }
+  .row.flip .txt { order: 1; }
+  .row.flip .pic { order: 2; }
+  .row .pic img {
+    width: 100%; height: auto; display: block;
+    border-radius: 4px;
+    background: var(--card); border: 1px solid var(--line);
+  }
+  @media (max-width: 720px) {
+    .row, .row.flip { display: block; padding: 40px 0; }
+  }
+
+  .dot {
+    display: inline-block; width: 9px; height: 9px; border-radius: 50%;
+    background: var(--accent); margin-right: 10px; vertical-align: 2px;
+  }
+  .lead-line { font-size: 1.15rem; }
+  .story p + p { margin-top: 14px; }
+  .closing { margin-top: 18px; font-style: italic; }
+  .closing .zh { font-style: normal; }
+
+  .read-more {
+    display: inline-block; margin-top: 22px;
+    color: var(--ink); text-decoration: none;
+    font-size: 0.95rem; letter-spacing: 0.08em;
+    border-bottom: 1px solid var(--ink); padding-bottom: 2px;
+  }
+  .read-more:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* ── 章節標題 ── */
+  section { padding: 30px 0; }
+  h2.sec {
+    text-align: center; font-size: 0.85rem; letter-spacing: 0.35em;
+    text-transform: uppercase; color: var(--muted); font-weight: 400;
+    margin-bottom: 10px;
+  }
+  .sec-divider { width: 44px; height: 1px; background: var(--ink); opacity: 0.4; margin: 0 auto 26px; }
+
+  /* ── 香水逐款 ── */
+  .perf-name { font-size: 1.15rem; letter-spacing: 0.12em; font-weight: 600; }
+  .perf-zh { color: var(--muted); font-size: 0.9rem; margin-top: 2px; letter-spacing: 0.2em; }
+  .perf-notes { margin: 14px 0 12px; font-size: 0.9rem; color: var(--muted); white-space: pre-line; }
+  .perf-desc { font-size: 0.95rem; }
+  .perf-desc p + p { margin-top: 10px; }
+  .perf-tag {
+    margin-top: 14px; font-size: 0.8rem; letter-spacing: 0.14em;
+    color: var(--accent); text-transform: uppercase;
+  }
+
+  /* ── 副標訂製 ── */
+  .how { max-width: 640px; margin: 0 auto 30px; text-align: center; }
+  .how p + p { margin-top: 14px; }
+  .lines { max-width: 720px; margin: 0 auto; }
+  .line-item {
+    background: var(--card); border: 1px solid var(--line);
+    padding: 12px 18px; margin-bottom: 10px;
+    font-size: 0.92rem;
+    display: flex; gap: 12px; align-items: baseline;
+  }
+  .line-num { color: var(--accent); font-size: 0.85rem; min-width: 20px; }
+  .line-body .en { font-weight: 600; letter-spacing: 0.04em; margin-right: 8px; }
+  .line-body .zh { color: var(--muted); font-size: 0.88rem; margin-right: 4px; }
+  .line-body .mandarin { color: var(--muted); font-size: 0.82rem; }
+
+  /* ── 尾部 ── */
+  footer { text-align: center; padding: 60px 0 70px; color: var(--muted); font-size: 0.88rem; }
+  footer .brand-mark { color: var(--ink); letter-spacing: 0.3em; font-size: 0.95rem; margin-bottom: 12px; }
+  .contact { margin-top: 8px; }
+  .contact a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .contact a:hover { border-bottom-color: var(--ink); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#top">KEEPSAKE</a>
+    <div class="nav-links">
+      <a href="#story">品牌故事</a>
+      <a href="#collection">香水系列</a>
+      <a href="#subtitle">訂製短句</a>
+      <a href="#contact">聯絡</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+
+  <!-- 第一屏：左字右圖 -->
+  <section>
+    <div class="row flip">
+      <div class="txt">
+        <div class="lead-line"><span class="dot"></span>KEEPSAKE 意思是珍藏小物, 一件因為值得紀念而被留存下來的物品. 🗝️</div>
+        <a class="read-more" href="#story">閱讀我們的故事 →</a>
+      </div>
+      <div class="pic">
+        <img src="https://res.cloudinary.com/dgwezwny/image/upload/v1795068342/keepsake_colse.jpg" alt="KEEPSAKE盒（蓋上）">
+      </div>
+    </div>
+  </section>
+
+  <!-- 故事：左圖右字 -->
+  <section id="story">
+    <div class="row">
+      <div class="pic">
+        <img src="https://res.cloudinary.com/dgwezwny/image/upload/v1795068343/keepsake_open.jpg" alt="KEEPSAKE盒（開蓋）">
+      </div>
+      <div class="txt story">
+        <p>KEEPSAKE 意為珍藏小物, 是香港自家調配手工香水品牌, 由兩位創辦人小批量調製.</p>
+        <p>我們相信, 香水不只是噴給別人聞, 也是為了取悅自己, 香水氣味總會記載著一些回憶, 當再次聞到那香味時, 那一刻的心情便會重新浮現.</p>
+        <p>我們的香水想承載兩樣東西, 一種值得珍藏的氣味, 和一個值得被好好珍藏的人, 也就是你自己.😉</p>
+        <p class="closing">You are worth keeping.<br><span class="zh">你值得被珍藏.🎁</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 香水系列：交替 -->
+  <section id="collection">
+    <h2 class="sec">The Collection</h2>
+    <div class="sec-divider"></div>
+
+    <div class="row">
+      <div class="pic"><img src="https://res.cloudinary.com/dgwezwny/image/upload/v1795068342/first_petal.jpg" alt="First Petal"></div>
+      <div class="txt">
+        <div class="perf-name">FIRST PETAL</div>
+        <div class="perf-zh">初綻花語</div>
+        <div class="perf-notes">🌱 前調｜青草．西柚
+🤍 中調｜白玉蘭
+🌾 後調｜木蘭．麝香</div>
+        <div class="perf-desc">
+          <p>每一次綻放, 都有它最初的模樣.</p>
+          <p>以青草與西柚展開清新的序幕, 揉合白玉蘭柔和細膩的花香, 最後由木蘭與麝香做結尾. 清新, 柔和, 帶一點不經意的溫柔. 一份值得留住的氣息.</p>
+        </div>
+        <div class="perf-tag">First Petal — You are worth keeping</div>
+      </div>
+    </div>
+
+    <div class="row flip">
+      <div class="pic"><img src="https://res.cloudinary.com/dgwezwny/image/upload/v1795068344/sunny_note.png" alt="Sunny Note"></div>
+      <div class="txt">
+        <div class="perf-name">SUNNY NOTE</div>
+        <div class="perf-zh">晴日柑語</div>
+        <div class="perf-notes">🌱 前調｜橘子．柚子．青檸
+🤍 中調｜百里香
+🌾 後調｜覆盆子</div>
+        <div class="perf-desc">
+          <p>橘子的明亮, 柚子的清新, 交織著青檸的輕快氣息. 百里香悄然點綴, 最後留下覆盆子的柔甜.</p>
+          <p>不必迎合誰的喜好, 只需跟隨自己的感覺, 讓每一天，都有屬於自己的明亮.</p>
+        </div>
+        <div class="perf-tag">Sunny Note — My scent. My rules.</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="pic"><img src="https://res.cloudinary.com/dgwezwny/image/upload/v1795068343/golden_hour.png" alt="Golden Hour"></div>
+      <div class="txt">
+        <div class="perf-name">GOLDEN HOUR</div>
+        <div class="perf-zh">金色時刻</div>
+        <div class="perf-notes">🌱 前調｜橙花．橘子
+🤍 中調｜茉莉．雞蛋花
+🌾 後調｜香草．蜂蠟</div>
+        <div class="perf-desc">
+          <p>橙花與橘子的明亮, 在茉莉與雞蛋花的柔美中緩緩綻放. 香草與蜂蠟的溫暖, 為這份香氣留下細膩而甜美的餘韻.</p>
+          <p>像午後最後一縷金色陽光, 溫柔地停留, 讓人捨不得忘記.</p>
+        </div>
+        <div class="perf-tag">Golden Hour — Remember this feeling.</div>
+      </div>
+    </div>
+
+    <div class="row flip">
+      <div class="pic"><img src="https://res.cloudinary.com/dgwezwny/image/upload/v1795068344/wood_wind.png" alt="Wood & Wind"></div>
+      <div class="txt">
+        <div class="perf-name">WOOD &amp; WIND</div>
+        <div class="perf-zh">柑風木語</div>
+        <div class="perf-notes">🌱 前調｜柚子．橘子．木
+🤍 中調｜愈創木．百里香
+🌾 後調｜麝香．琥珀</div>
+        <div class="perf-desc">
+          <p>柚子與橘子的清新, 輕輕掠過木質的沉靜. 愈創木與百里香交織出自然氣息, 麝香與琥珀則在最後留下溫柔而深邃的餘韻.</p>
+          <p>有些氣息, 只屬於自己. 不為迎合, 不為取悅.</p>
+        </div>
+        <div class="perf-tag">Wood &amp; Wind — Not for the world</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="pic"><img src="https://res.cloudinary.com/dgwezwny/image/upload/v1795068343/daisy_meadow.png" alt="Daisy Meadow"></div>
+      <div class="txt">
+        <div class="perf-name">DAISY MEADOW</div>
+        <div class="perf-zh">茉莉雛菊園</div>
+        <div class="perf-notes">🌱 前調｜桃．西柚
+🤍 中調｜茉莉．鈴蘭
+🌾 後調｜雪松．麝香．檀香</div>
+        <div class="perf-desc">
+          <p>桃與西柚帶來輕盈的初遇, 茉莉與鈴蘭在花香中悄然綻放. 雪松與檀香的溫柔木質, 最後留下麝香般貼近肌膚的氣息.</p>
+          <p>自在生長, 自有模樣. 不被定義, 只做自己.</p>
+        </div>
+        <div class="perf-tag">Daisy Meadow — Mine, not yours to define.</div>
+      </div>
+    </div>
+
+    <div class="row flip">
+      <div class="pic"><img src="https://res.cloudinary.com/dgwezwny/image/upload/v1795068345/post_5_baby2.png" alt="Baby Breath"></div>
+      <div class="txt">
+        <div class="perf-name">BABY BREATH</div>
+        <div class="perf-zh">暖絮搖籃</div>
+        <div class="perf-notes">🌱 前調｜梨．鈴蘭
+🤍 中調｜白麝香
+🌾 後調｜麝香．香草．雪松</div>
+        <div class="perf-desc">
+          <p>梨與鈴蘭輕輕展開, 白麝香像柔軟的擁抱, 香草與雪松留下溫暖而安靜的氣息.</p>
+          <p>不用急, 不用逞強. 慢慢呼吸, 你已經很好.</p>
+        </div>
+        <div class="perf-tag">Baby Breath — Breathe, you're safe.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 副標訂製 -->
+  <section id="subtitle">
+    <h2 class="sec">Your Keepsake Line</h2>
+    <div class="sec-divider"></div>
+    <div class="how">
+      <p>選購時先選一款喜歡的香味, 再選擇一句 最代表當刻的你 的短句, 我們會把它印在瓶上, 做成專屬於你的珍藏.🎁</p>
+      <p>有選擇困難? 別怕~ 我們預設的是品牌短句: <b>You are worth keeping.</b> 不選擇也是一種選擇, 對吧~😉</p>
+    </div>
+    <div class="lines">
+      <div class="line-item"><span class="line-num">1</span><span class="line-body"><span class="en">You are worth keeping.</span><span class="zh">錫自己多啲.</span><span class="mandarin">（你值得被珍藏.）</span></span></div>
+      <div class="line-item"><span class="line-num">2</span><span class="line-body"><span class="en">My scent. My rules.</span><span class="zh">我嘅香味, 我話事.</span><span class="mandarin">（我的香味, 由我作主.）</span></span></div>
+      <div class="line-item"><span class="line-num">3</span><span class="line-body"><span class="en">Mine, not yours to define.</span><span class="zh">我係點, 我自己決定.</span><span class="mandarin">（我如何, 由我自己定義.）</span></span></div>
+      <div class="line-item"><span class="line-num">4</span><span class="line-body"><span class="en">Stay with you</span><span class="zh">陪住你.</span><span class="mandarin">（陪伴著你.）</span></span></div>
+      <div class="line-item"><span class="line-num">5</span><span class="line-body"><span class="en">Breathe, you're safe.</span><span class="zh">深呼吸, 你一切都好好.</span><span class="mandarin">（深呼吸, 你一切都好.）</span></span></div>
+      <div class="line-item"><span class="line-num">6</span><span class="line-body"><span class="en">Keep your fire.</span><span class="zh">守住你團火.</span><span class="mandarin">（守住你的氣焰.）</span></span></div>
+      <div class="line-item"><span class="line-num">7</span><span class="line-body"><span class="en">Not for the world.</span><span class="zh">唔係為呢個世界.</span><span class="mandarin">（不是為了這個世界.）</span></span></div>
+      <div class="line-item"><span class="line-num">8</span><span class="line-body"><span class="en">Remember this feeling.</span><span class="zh">記住呢一刻嘅感覺.</span><span class="mandarin">（記住此刻的感覺.）</span></span></div>
+      <div class="line-item"><span class="line-num">9</span><span class="line-body"><span class="en">A hug for you.</span><span class="zh">黎, 攬攬.</span><span class="mandarin">（送你一個擁抱.）</span></span></div>
+      <div class="line-item"><span class="line-num">10</span><span class="line-body"><span class="en">For the one who gives so much.</span><span class="zh">送比一直默默付出嘅你.</span><span class="mandarin">（給一直默默付出的你.）</span></span></div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="brand-mark">KEEPSAKE</div>
+    <div>Handcrafted in Hong Kong · 30ml EDT · Small batch</div>
+    <div class="contact">
+      Instagram：<a href="https://www.instagram.com/keepsake.hk/">@keepsake.hk</a><br>
+      查詢：<a href="mailto:keepsake.perfume@proton.me">keepsake.perfume@proton.me</a>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
